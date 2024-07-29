@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    font-family: "Poppins";
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(34, 34, 34);
+}
+
+.container {
+    display: flex;
+    width: 256px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(34, 34, 34, 0.3);
+    border-radius: 12px;
+    overflow: hi;
+    transition: 0.8s ease-out;
+    position: relative;
+
+}
+
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        deepskyblue,
+        rgb(255, 46, 172),
+        rgb(255, 46, 172),
+        deepskyblue
+    );
+    z-index: -1;
+    animation: rotate 10s linear infinite;
+    filter: blur(2rem);
+
+}
+
+.container::after {
+    filter: blur(5rem);
+}
+
+@keyframes rotate {
+    0% {
+        --gradient-angle: 0deg;
+    }
+    100% {
+        --gradient-angle: 360deg;
+    }
+}
+
+#input {
+    width: 100%;
+    line-height: 68px;
+    font-weight: 600;
+    overflow: auto;
+    padding: 8px 12px 0;
+    outline: none;
+    color: rgb(67, 208, 255);
+    font-size: 38px;
+    border-radius: inherit;
+    background-color: transparent;
+}
+
+.btns-container {
+    display: grid;
+
+    grid-template: 50px 50px 50px 50px 50px / 50px 50px 50px 50px;
+    gap: 10px;
+    padding: 10px;
+    border-radius: inherit;
+}
+
+button {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    background-color: hsl(331, 100%, 65%);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+button:hover {
+    background-color: hsl(331, 100%, 80%);
+
+}
+button:active {
+    transition: 0s;
+    background-color: hsl(331, 100%, 85%);
+    
+}
+
+.zero {
+    grid-column: 1 / 3;
+}
+
+button.blue {
+    font-size: 18px;
+    background-color: deepskyblue;
+    transition: 0.3s ease-out;
+}
+button.blue:hover {
+    font-size: 20px;
+    background-color: hsl(195, 100%, 65%);
+    transform: translateY(-3px);
+}
+button.blue:active {
+    background-color: hsl(195, 100%, 70%);
+    transform: translateY(0px);
+    transition: 0s;
+
+}
